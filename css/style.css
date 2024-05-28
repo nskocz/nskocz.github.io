@@ -37,22 +37,24 @@ header.hidden {
 .header-links {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* Center the buttons */
     width: 100%;
     max-width: 60rem;
     margin: 0 auto;
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 1rem; /* Dynamic padding between buttons */
 }
 
 .header-links a.button {
-    flex: 1;
-    margin: 0.5rem; /* Adjust margin for better spacing */
+    flex: 1 1 auto;
+    margin: 0.25rem; /* Reduce margin for better spacing */
     text-align: center;
     background-color: var(--background-color);
     color: var(--main-color);
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
+    max-width: 200px; /* Set a fixed width for the buttons on larger screens */
 }
 
 .header-links a .fab {
@@ -91,7 +93,6 @@ header.hidden {
     text-align: center; /* Ensures text within the div is centered if it breaks into multiple lines */
     height: 100vh; /* Optional: Adjusts the height of the intro section to fill the viewport */
 }
-
 
 .intro-text {
     text-align: center; /* Centers the text horizontally */
@@ -189,14 +190,52 @@ ul li::before {
 
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
+    header {
+        position: relative; /* Header is no longer fixed */
+        padding: 0.5rem 1rem; /* Adjust header padding for smaller screens */
+    }
+
     .header-links {
         flex-direction: column;
+        align-items: center;
         padding: 0.5rem;
+        gap: 0.5rem; /* Reduce gap between buttons */
     }
 
     .header-links a.button, .header-links a.social-icon {
-        width: 100%; /* Full width on smaller screens */
-        margin: 0.5rem 0; /* Space between buttons */
+        width: 90%; /* Adjust width for smaller screens */
+        margin: 0.5rem 0; /* Center buttons */
+    }
+
+    .header-links a.button {
+        max-width: none; /* Remove max-width on smaller screens */
+    }
+
+    .header-links a .fab {
+        font-size: 1rem; /* Adjust icon size for smaller screens */
+    }
+
+    .main-content {
+        padding-top: 0; /* Remove extra padding since header is not fixed */
+    }
+
+    .intro-text h1 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .intro-text p {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+
+    .buttons-container {
+        flex-direction: column; /* Stack buttons vertically */
+        width: 100%;
+    }
+
+    .buttons-container .scroll-button {
+        width: 90%; /* Make buttons take most of the screen width */
+        margin: 0.5rem 0; /* Space buttons vertically */
+        padding: 0.5rem; /* Adjust padding */
     }
 
     .job, .project {
@@ -210,6 +249,7 @@ ul li::before {
     }
 }
 
+/* style.css */
 
 .contact-details {
     text-align: center;
@@ -217,10 +257,12 @@ ul li::before {
     background-color: #f0f0f0;
     margin: 20px 0;
     border-radius: 10px;
+    font-size: 1.2rem; /* Add this line to increase the font size */
 }
 
 .contact-details p {
     margin: 10px 0; /* Provides spacing between each line */
+    font-size: 1.2rem; /* Add this line to increase the font size */
 }
 
 .contact-details i {
@@ -231,6 +273,7 @@ ul li::before {
 .contact-details a {
     color: var(--main-color);
     text-decoration: none;
+    font-size: 1.2rem; /* Add this line to increase the font size */
 }
 
 .contact-details a:hover {
