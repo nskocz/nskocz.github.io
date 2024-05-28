@@ -24,19 +24,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Add header show/hide on scroll functionality
     let lastScrollTop = 0;
     const header = document.getElementById('header');
 
     window.addEventListener('scroll', () => {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollTop > lastScrollTop) {
-            // Downscroll
             header.classList.add('hidden');
         } else {
-            // Upscroll
             header.classList.remove('hidden');
         }
         lastScrollTop = scrollTop;
     });
+
+    const adjustHeaderForMobile = () => {
+        const headerLinks = document.querySelector('.header-links');
+        const buttons = document.querySelectorAll('.header-links a.button');
+        const socialIcons = document.querySelectorAll('.header-links a.social-icon');
+
+        if (window.innerWidth <= 768) {
+            header.style.position = 'relative';
+            header.style.padding = '0.5rem 1rem';
+            headerLinks.style.flexDirection = 'column';
+            headerLinks.style.padding = '0.5rem';
+            buttons.forEach(button => {
+                button.style.width = '90%';
+                button.style.margin = '0.5rem 0';
+            });
+            socialIcons.forEach(icon => {
+                icon.style.margin = '0.5rem 0';
+            });
+        } else {
+            header.style.position = 'fixed';
+            header.style.padding = '1rem 2rem';
+            headerLinks.style.flexDirection = 'row';
+            headerLinks.style.padding = '0';
+            buttons.forEach(button => {
+                button.style.width = '';
+                button.style.margin = '0.5rem';
+            });
+            socialIcons.forEach(icon => {
+                icon.style.margin = '';
+            });
+        }
+    };
+
+    adjustHeaderForMobile();
+    window.addEventListener('resize', adjustHeaderForMobile);
 });
